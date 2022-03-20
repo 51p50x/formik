@@ -29,12 +29,20 @@ function App () {
         <label>Name</label>
         <Field name = 'name' type = 'text' />
         <ErrorMessage name = 'name' />
+        <br/>
+        <Field name = 'select' as = 'select'>
+            <option value='default'>Default option</option>
+            <option value='happy waifu'>happy waifu</option>
+        </Field>
+        <br/>
         <label>Lastname</label>
         <Field name = 'lastname' type = 'text' />
         <ErrorMessage name = 'lastname' />
+        <br/>
         <label>Email</label>
         <Field name = 'email' type = 'email' />
         <ErrorMessage name = 'email' />
+        <br/>
         <button type="submit">Sent</button>
       </Form>
     </Formik>
