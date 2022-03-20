@@ -1,57 +1,42 @@
-import {Formik} from 'formik'
+import {Formik, Field, Form, ErrorMessage} from 'formik';
 
-const validate = (values) =>{
-  const errors = {}
-  
-  if(!values.name){
-    errors.name = 'Name is required'
-  } else if (values.name.length < 5){
-    errors.name = 'Name is too short'
+const validate = values => {
+  const errors = {};
+
+  if (!values.name) {
+    errors.name = 'Name is required';
+  } else if (values.name.length < 5) {
+    errors.name = 'Name is too short';
   }
-  
-  if(!values.lastname){
-    errors.lastname = 'Lastname is required'
-  } else if (values.lastname.length < 5){
-    errors.lastname = 'Lastname is too short'
+
+  if (!values.lastname) {
+    errors.lastname = 'Lastname is required';
+  } else if (values.lastname.length < 5) {
+    errors.lastname = 'Lastname is too short';
   }
-  
-  return errors
-}
 
-function App() {
+  return errors;
+};
 
+function App () {
   return (
     <Formik
-        initialValues = {{name: '', lastname: '', email: '',}}
-        validate = {validate}
-        onSubmit = {values => console.log(values)}
+      initialValues={{name: '', lastname: '', email: ''}}
+      validate={validate}
+      onSubmit={values => console.log (values)}
     >
-      {formik =>
-        <form onSubmit={formik.handleSubmit}>
-            <label>Name</label>
-            <input
-            type='text'
-            {...formik.getFieldProps('name')}
-            />
-            {formik.touched.name && formik.errors.name? 
-            <div>{formik.errors.name}</div> : null}
-            <label>Lastname</label>
-            <input
-            type='text'
-            {...formik.getFieldProps('lastname')}
-            />
-            {formik.touched.lastname && formik.errors.lastname?
-            <div>{formik.errors.lastname}</div> : null}
-            <label>Email</label>
-            <input
-            type='email'
-            {...formik.getFieldProps('email')}
-            />
-            {formik.touched.email && formik.errors.email? 
-            <div>{formik.errors.email}</div> : null}
-            <button type='submit'>Sent</button>
-        </form>
-    }
+      <Form>
+        <label>Name</label>
+        <Field name = 'name' type = 'text' />
+        <ErrorMessage name = 'name' />
+        <label>Lastname</label>
+        <Field name = 'lastname' type = 'text' />
+        <ErrorMessage name = 'lastname' />
+        <label>Email</label>
+        <Field name = 'email' type = 'email' />
+        <ErrorMessage name = 'email' />
+        <button type="submit">Sent</button>
+      </Form>
     </Formik>
   );
 }
