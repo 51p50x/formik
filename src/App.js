@@ -4,6 +4,8 @@ import TextInput from './Components/TextInput'
 import Select from './Components/Select';
 import Radio from './Components/Radio';
 
+//un comentario
+
 const validate = values => {
   const errors = {};
 
